@@ -5,13 +5,16 @@
  * See: https://www.gatsbyjs.org/docs/static-query/
  */
 
-import React from "react"
+import React, { useContext } from "react"
 import { StaticQuery, graphql } from "gatsby"
 import Image from "gatsby-image"
 
 import { rhythm } from "../utils/typography"
+import CounterContext from "../shared/counter-context"
 
 function Bio() {
+  const counter = useContext(CounterContext)
+
   return (
     <StaticQuery
       query={bioQuery}
@@ -45,6 +48,7 @@ function Bio() {
                 You should follow him on Twitter
               </a>
             </p>
+            <p>The count is equal to: {counter.currentCount}</p>
           </div>
         )
       }}
